@@ -43,7 +43,7 @@ USE_SSH=true bun run deploy
 Sans SSH :
 
 ```bash
-GIT_USER=<Votre nom d'utilisateur GitHub> bun run deploy
+GIT_USER=<Votre nom utilisateur GitHub> bun run deploy
 ```
 
 Si vous utilisez GitHub Pages pour l'hébergement, cette commande permet de générer facilement le site web et de le pousser sur la branche `gh-pages`.
