@@ -1,6 +1,6 @@
-# Website
+# GLOBE-documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Ce site web est créé avec [Docusaurus](https://docusaurus.io/), un générateur de sites web statiques moderne.
 
 ## Installation
 
@@ -8,42 +8,42 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 bun
 ```
 
-## Local Development
+## Développement local
 
 ```bash
 bun start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Cette commande lance un serveur de développement local et ouvre une fenêtre de navigateur. La plupart des modifications sont visibles instantanément sans avoir à redémarrer le serveur.
 
-## Build
+## Compilation
 
 ```bash
 bun run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Cette commande génère le contenu statique dans le répertoire `build` et peut être servie par n'importe quel service d'hébergement de contenu statique.
 
-## Local server
+## Serveur local
 
 ```bash
 bun run serve
 ```
 
-Work only if you build the website first [build](#build).
+Fonctionne uniquement si vous avez préalablement compilé le site web [build](#build).
 
-## Deployment
+## Déploiement
 
-Using SSH:
+Avec SSH :
 
 ```bash
 USE_SSH=true bun run deploy
 ```
 
-Not using SSH:
+Sans SSH :
 
 ```bash
-GIT_USER=<Your GitHub username> bun run deploy
+GIT_USER=<Votre nom d'utilisateur GitHub> bun run deploy
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Si vous utilisez GitHub Pages pour l'hébergement, cette commande permet de générer facilement le site web et de le pousser sur la branche `gh-pages`.
