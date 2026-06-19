@@ -1,42 +1,38 @@
-name: Deploy to GitHub Pages
+name: Build & deploy doc to GLOBE-website
+
 on:
   push:
     branches:
       - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
 jobs:
-  build:
-    name: Build Docusaurus
+  build-and-deploy:
+    name: Build Docusaurus & deploy to GLOBE-website
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout doc repo
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: oven-sh/setup-bun@v2
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
+
       - name: Build website
         run: bun run build
-      - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+
+      - name: Deploy to GLOBE-website /doc
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: build
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: repaircafetours/GLOBE-website
+          publish_branch: main
+          publish_dir: ./build
+          destination_dir: doc
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
