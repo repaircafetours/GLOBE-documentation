@@ -85,7 +85,7 @@ const config: Config = {
     },
     footer: {
       style: "light",
-      copyright: `Copyright © ${new Date().getFullYear()} Repair Café Tours, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Association Repair Café Tours`,
     },
     prism: {
       theme: prismThemes.github,
